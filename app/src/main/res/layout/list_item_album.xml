@@ -3,11 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
+    android:id="@+id/album_item"
     android:padding="16dp">
 
     <ImageView
         android:layout_width="48dp"
         android:layout_height="48dp"
+        android:id="@+id/album_art"
         android:background="@color/colorPrimaryDark" />
 
     <LinearLayout

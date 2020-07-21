@@ -3,17 +3,20 @@ package com.example.musicplayer;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 
 public class MusicLibrary {
 
     public static ArrayList<Album> albums;
     public static ArrayList<Album> recentAlbums;
     public static ArrayList<Song> songs;
+    private static HashMap<Integer, Album> albumHashMap;
 
     public static void buildAlbums() {
         albums = new ArrayList<Album>(Arrays.asList(
                 new Album("What's Going On",
                         "Marvin Gaye",
+                        R.drawable.album_0,
                         new ArrayList<Song>(Arrays.asList(
                                 new Song("What's Going On"),
                                 new Song("What's Happening Brother"),
@@ -26,6 +29,7 @@ public class MusicLibrary {
                                 new Song("Inner City Blues (Make Me Wanna Holler)")))),
                 new Album("DAMN.",
                         "Kendrick Lamar",
+                        R.drawable.album_1,
                         new ArrayList<Song>(Arrays.asList(
                                 new Song("BLOOD."),
                                 new Song("DNA."),
@@ -43,6 +47,7 @@ public class MusicLibrary {
                                 new Song("DUCKWORTH.")))),
                 new Album("Stankonia",
                         "Outkast",
+                        R.drawable.album_2,
                         new ArrayList<Song>(Arrays.asList(
                                 new Song("Intro"),
                                 new Song("Gasoline Dreams (featuring Khujo)"),
@@ -70,6 +75,7 @@ public class MusicLibrary {
                                 new Song("Stankonia (Stanklove) (featuring Big Rube and Sleepy Brown)")))),
                 new Album("Awaken, My Love!",
                         "Childish Gambino",
+                        R.drawable.album_3,
                         new ArrayList<Song>(Arrays.asList(
                                 new Song("Me and Your Mama"),
                                 new Song("Have Some Love"),
@@ -90,12 +96,21 @@ public class MusicLibrary {
 
         recentAlbums = new ArrayList<>();
         songs = new ArrayList<>();
+        albumHashMap = new HashMap<>();
         for (Album album : albums) {
             songs.addAll(album.getSongs());
+            albumHashMap.put(album.getAlbumId(), album);
             if (album.getIsRecent()) {
                 recentAlbums.add(album);
             }
         }
+    }
+
+    public static Album getAlbumById(int id) {
+        if (albumHashMap == null) {
+            albumHashMap = new HashMap<>();
+        }
+        return albumHashMap.get(id);
     }
 
 }

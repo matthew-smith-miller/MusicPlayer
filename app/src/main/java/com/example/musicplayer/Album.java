@@ -1,21 +1,28 @@
 package com.example.musicplayer;
 
+import android.app.Activity;
+
 import java.util.ArrayList;
 
 public class Album {
-    private static int mId;
+    private static int idCounter;
+    private int mId;
     private String mAlbumTitle;
     private String mArtistName;
+    private int mAlbumArt;
     private Boolean mIsRecent;
     private ArrayList<Song> mSongs;
 
     public Album(String albumTitle,
                  String artistName,
+                 int albumArt,
                  ArrayList<Song> songs) {
         mAlbumTitle = albumTitle;
         mArtistName = artistName;
+        mAlbumArt = albumArt;
         mSongs = songs;
-        mId = mId + 1;
+        idCounter++;
+        mId = idCounter;
         mIsRecent = setRecentFlag();
     }
 
@@ -25,6 +32,14 @@ public class Album {
 
     public String getArtistName() {
         return mArtistName;
+    }
+
+    public int getAlbumId() {
+        return mId;
+    }
+
+    public int getAlbumArt() {
+        return mAlbumArt;
     }
 
     public ArrayList<Song> getSongs() {

@@ -4,6 +4,7 @@
     <string name="spotlight_description">\"In 1969 or 1970, I began to re-evaluate my whole concept of what I wanted my music to say,\" Marvin Gaye said. \"I was very much affected by letters my brother was sending me from Vietnam, as well as the social situation here at home. I realized that I had to put my own fantasies behind me if I wanted to write songs that would reach the souls of people. I wanted them to take a look at what was happening in the world.\" The masterpiece that followed Gaye\'s awakening revolutionized black music.</string>
     <string name="artists">Artists</string>
     <string name="albums">Albums</string>
+    <string name="album">View Album</string>
     <string name="songs">Songs</string>
     <string name="album_spotlight">Album Spotlight</string>
 </resources>

@@ -12,14 +12,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:layout_marginBottom="12dp"
+        style="@style/HeaderText"
         tools:text="Victory Lap" />
 
     <TextView
         android:id="@+id/album_artist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="6dp"
         android:layout_marginBottom="12dp"
         tools:text="Nipsey Hussle" />
 
@@ -27,6 +27,7 @@
         android:layout_width="240dp"
         android:layout_height="240dp"
         android:layout_gravity="center_horizontal"
+        android:id="@+id/album_art"
         android:background="@color/colorPrimary" />
 
 

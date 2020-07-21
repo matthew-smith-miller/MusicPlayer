@@ -25,6 +25,9 @@
         <activity
             android:name=".SongsActivity"
             android:label="@string/songs" />
+        <activity
+            android:name=".AlbumActivity"
+            android:label="@string/album" />
     </application>
 
 </manifest>

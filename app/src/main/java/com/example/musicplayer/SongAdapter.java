@@ -1,7 +1,6 @@
 package com.example.musicplayer;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,10 +12,10 @@ import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 
-public class AlbumAdapter extends ArrayAdapter<Album> {
+public class SongAdapter extends ArrayAdapter<Song> {
 
-    public AlbumAdapter(Context context, ArrayList<Album> albums) {
-        super(context, 0, albums);
+    public SongAdapter(Context context, ArrayList<Song> songs) {
+        super(context, 0, songs);
     }
 
     @NonNull
@@ -25,17 +24,17 @@ public class AlbumAdapter extends ArrayAdapter<Album> {
         View listItemView = convertView;
         if (listItemView == null) {
             listItemView = LayoutInflater.from(getContext()).inflate(
-                    R.layout.list_item_album, parent, false);
+                    R.layout.list_item_song, parent, false);
         }
 
         //Get the Album object located at this position in the list
-        Album currentAlbum = getItem(position);
+        Song currentSong = getItem(position);
 
         //Set album title and album artist
-        ((TextView) listItemView.findViewById(R.id.list_album_title)).setText(
-                currentAlbum.getAlbumTitle());
-        ((TextView) listItemView.findViewById(R.id.list_album_artist)).setText(
-                currentAlbum.getArtistName());
+        ((TextView) listItemView.findViewById(R.id.list_song_title)).setText(
+                currentSong.getSongTitle());
+        ((TextView) listItemView.findViewById(R.id.list_song_length)).setText(
+                currentSong.getSongLength());
 
         return listItemView;
     }

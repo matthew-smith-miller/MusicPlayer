@@ -10,6 +10,8 @@ public class MusicLibrary {
     public static ArrayList<Album> albums;
     public static ArrayList<Album> recentAlbums;
     public static ArrayList<Song> songs;
+    public static ArrayList<Artist> artists;
+    public static HashMap<String, ArrayList<Album>> artistHashMap;
     private static HashMap<Integer, Album> albumHashMap;
 
     public static void buildAlbums() {
@@ -96,10 +98,19 @@ public class MusicLibrary {
 
         recentAlbums = new ArrayList<>();
         songs = new ArrayList<>();
+        artists = new ArrayList<>();
         albumHashMap = new HashMap<>();
+        artistHashMap = new HashMap<>();
         for (Album album : albums) {
             songs.addAll(album.getSongs());
+            //artists.add(album.getArtistName());
             albumHashMap.put(album.getAlbumId(), album);
+            if (artistHashMap.get(album.getArtistName()) == null) {
+                artistHashMap.put(album.getArtistName(), new ArrayList<Album>(Arrays.asList(
+                        album)));
+            } else {
+                artistHashMap.get(album.getArtistName()).add(album);
+            }
             if (album.getIsRecent()) {
                 recentAlbums.add(album);
             }

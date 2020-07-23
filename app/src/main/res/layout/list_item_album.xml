@@ -20,9 +20,10 @@
 
         <TextView
             android:id="@+id/list_album_title"
+            style="@style/HeaderText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="What's Goin' On" />
+            tools:text="What's Going On" />
 
         <TextView
             android:id="@+id/list_album_artist"

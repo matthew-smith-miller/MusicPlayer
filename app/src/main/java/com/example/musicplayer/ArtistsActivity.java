@@ -15,7 +15,7 @@ public class ArtistsActivity extends AppCompatActivity {
 
         ((TextView) findViewById(R.id.list_header)).setText("Artists");
 
-        AlbumAdapter albumAdapter = new AlbumAdapter(this, MusicLibrary.albums);
-        ((ListView) findViewById(R.id.list)).setAdapter(albumAdapter);
+        ArtistAdapter artistAdapter = new ArtistAdapter(this, MusicLibrary.artists);
+        ((ListView) findViewById(R.id.list)).setAdapter(artistAdapter);
     }
 }

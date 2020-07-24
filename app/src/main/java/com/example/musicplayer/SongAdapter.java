@@ -1,6 +1,7 @@
 package com.example.musicplayer;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +36,18 @@ public class SongAdapter extends ArrayAdapter<Song> {
                 currentSong.getSongTitle());
         ((TextView) listItemView.findViewById(R.id.list_song_length)).setText(
                 currentSong.getSongLength());
+        listItemView.setTag(currentSong.getSongId());
+
+        //Set OnClickListener to go to PlaySongActivity
+        listItemView.findViewById(R.id.song_item).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Context context = view.getContext();
+                Intent intent = new Intent(context, PlaySongActivity.class);
+                intent.putExtra("song", Integer.parseInt(view.getTag().toString()));
+                context.startActivity(intent);
+            }
+        });
 
         return listItemView;
     }

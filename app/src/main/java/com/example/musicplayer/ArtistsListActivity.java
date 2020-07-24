@@ -6,16 +6,14 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class SongsActivity extends AppCompatActivity {
+public class ArtistsListActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
-        ((TextView) findViewById(R.id.list_header)).setText("Songs");
-
-        SongAdapter songAdapter = new SongAdapter(this, MusicLibrary.songs);
-        ((ListView) findViewById(R.id.list)).setAdapter(songAdapter);
+        ArtistAdapter artistAdapter = new ArtistAdapter(this, MusicLibrary.artists);
+        ((ListView) findViewById(R.id.list)).setAdapter(artistAdapter);
     }
 }

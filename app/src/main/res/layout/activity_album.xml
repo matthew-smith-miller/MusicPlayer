@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/HeaderText"
+
         tools:text="Victory Lap" />
 
     <TextView
@@ -19,12 +20,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="6dp"
         tools:text="Nipsey Hussle" />
 
     <ImageView
-        android:layout_width="240dp"
-        android:layout_height="240dp"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
         android:layout_gravity="center_horizontal"
         android:id="@+id/album_art"
         android:background="@color/colorPrimary" />

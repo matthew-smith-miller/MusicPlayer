@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".AlbumActivity">
+    tools:context=".ArtistActivity">
 
 
     <LinearLayout
@@ -14,14 +14,14 @@
 
 
         <ImageView
-            android:id="@+id/album_art"
+            android:id="@+id/artist_image"
             android:layout_width="match_parent"
             android:layout_height="240dp"
             android:layout_gravity="center_horizontal"
-            android:background="@color/colorPrimary" />
+            android:scaleType="centerCrop"
+            tools:src="@drawable/artist_3" />
 
         <TextView
-            android:id="@+id/album_artist"
             style="@style/HeaderText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -37,6 +37,12 @@
 
     </LinearLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/colorPrimaryOverlay" />
+
     <TextView
         android:id="@+id/artist_name"
         style="@style/HeaderText"
@@ -44,5 +50,6 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="12dp"
         android:layout_marginTop="12dp"
-        tools:text="Nipsey Hussle" />
+        tools:text="M-Cat" />
+
 </RelativeLayout>

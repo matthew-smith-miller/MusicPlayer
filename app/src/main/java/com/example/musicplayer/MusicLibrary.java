@@ -7,112 +7,88 @@ import java.util.HashMap;
 
 public class MusicLibrary {
 
+    public static ArrayList<Artist> artists;
     public static ArrayList<Album> albums;
     public static ArrayList<Album> recentAlbums;
     public static ArrayList<Song> songs;
-    public static ArrayList<Artist> artists;
-    public static HashMap<String, ArrayList<Album>> artistHashMap;
+    private static HashMap<Integer, Artist> artistHashMap;
     private static HashMap<Integer, Album> albumHashMap;
+    private static HashMap<Integer, Song> songHashMap;
 
-    public static void buildAlbums() {
-        albums = new ArrayList<Album>(Arrays.asList(
-                new Album("What's Going On",
-                        "Marvin Gaye",
-                        R.drawable.album_0,
-                        new ArrayList<Song>(Arrays.asList(
-                                new Song("What's Going On"),
-                                new Song("What's Happening Brother"),
-                                new Song("Flyin' High (In the Friendly Sky)"),
-                                new Song("Save the Children"),
-                                new Song("God Is Love"),
-                                new Song("Mercy Mercy Me (The Ecology)"),
-                                new Song("Right On"),
-                                new Song("Wholy Holy"),
-                                new Song("Inner City Blues (Make Me Wanna Holler)")))),
-                new Album("DAMN.",
-                        "Kendrick Lamar",
-                        R.drawable.album_1,
-                        new ArrayList<Song>(Arrays.asList(
-                                new Song("BLOOD."),
-                                new Song("DNA."),
-                                new Song("YAH."),
-                                new Song("ELEMENT."),
-                                new Song("FEEL."),
-                                new Song("LOYALTY. (FEATURING RIHANNA)"),
-                                new Song("PRIDE."),
-                                new Song("HUMBLE."),
-                                new Song("LUST."),
-                                new Song("LOVE. (FEATURING ZACARI)"),
-                                new Song("XXX. (FEATURING U2)"),
-                                new Song("FEAR."),
-                                new Song("GOD."),
-                                new Song("DUCKWORTH.")))),
-                new Album("Stankonia",
-                        "Outkast",
-                        R.drawable.album_2,
-                        new ArrayList<Song>(Arrays.asList(
-                                new Song("Intro"),
-                                new Song("Gasoline Dreams (featuring Khujo)"),
-                                new Song("I'm Cool (interlude)"),
-                                new Song("So Fresh, So Clean"),
-                                new Song("Ms. Jackson"),
-                                new Song("Snappin' & Trappin' (featuring Killer Mike and J-Sweet)"),
-                                new Song("D.F. (interlude)"),
-                                new Song("Spaghetti Junction"),
-                                new Song("Kim & Cookie (interlude)"),
-                                new Song("I'll Call B4 I Cum (featuring Gangsta Boo and Eco)"),
-                                new Song("B.O.B."),
-                                new Song("Xplosion (featuring B-Real)"),
-                                new Song("Good Hair (interlude)"),
-                                new Song("We Luv Deez Hoez (featuring Backbone and Big Gipp)"),
-                                new Song("Humble Mumble (featuring Erykah Badu)"),
-                                new Song("Drinkin' Again (interlude)"),
-                                new Song("?"),
-                                new Song("Red Velvet"),
-                                new Song("Cruisin' in the ATL (interlude)"),
-                                new Song("Gangsta Shit (featuring Slimm Calhoun, C-Bone and T-Mo)"),
-                                new Song("Toilet Tisha"),
-                                new Song("Slum Beautiful (featuring Cee-Lo)"),
-                                new Song("Pre-Nump (interlude)"),
-                                new Song("Stankonia (Stanklove) (featuring Big Rube and Sleepy Brown)")))),
-                new Album("Awaken, My Love!",
-                        "Childish Gambino",
-                        R.drawable.album_3,
-                        new ArrayList<Song>(Arrays.asList(
-                                new Song("Me and Your Mama"),
-                                new Song("Have Some Love"),
-                                new Song("Boogieman"),
-                                new Song("Zombies"),
-                                new Song("Riot"),
-                                new Song("Redbone"),
-                                new Song("California"),
-                                new Song("Terrified"),
-                                new Song("Baby Boy"),
-                                new Song("The Night Me and Your Mama Met"),
-                                new Song("Stand Tall"))))));
-                            /*new Album("That Carter III", "Lil Wayne"),
-                            new Album("Take Care", "Drake"),
-                            new Album("Things Fall Apart", "The Roots"),
-                            new Album("Victory Lap", "Nipsey Hussle"),
-                            new Album("The Miseducation of Lauryn Hill","Lauryn Hill")*/
+    public static void buildMusicLibrary() {
+        artists = new ArrayList<>(Arrays.asList(
+                new Artist(
+                        "Dale Earkins",
+                        R.drawable.artist_2,
+                        new ArrayList<>(Arrays.asList(
+                                new Album("Wide Open Highway",
+                                        "Dale Earkins",
+                                        R.drawable.album_0,
+                                        new ArrayList<Song>(Arrays.asList(
+                                                new Song("Cowboy Love"),
+                                                new Song("Alberta Skies"),
+                                                new Song("I Bet You Can't"),
+                                                new Song("Calgary Girls"),
+                                                new Song("Ain't it Friday Yet?"),
+                                                new Song("Busted Tires But I'm Still Smiling"),
+                                                new Song("My First Bass"),
+                                                new Song("Tomatoes and Tomatillos (feat. Juan Ruiz)"),
+                                                new Song("Missoula")))),
+                                new Album("Next Time",
+                                        "Dale Earkins",
+                                        R.drawable.album_1,
+                                        new ArrayList<Song>(Arrays.asList(
+                                                new Song("Sally Goodin"),
+                                                new Song("Next Time"),
+                                                new Song("Bend in the River (feat. Alice Laramore)"),
+                                                new Song("Turbo"),
+                                                new Song("Hot Cheetos 'n Suds"),
+                                                new Song("Curtis the Slugger"),
+                                                new Song("Pickup Truck Angel"),
+                                                new Song("Kalispell"),
+                                                new Song("Damned if I Do"),
+                                                new Song("Lake Trout"),
+                                                new Song("Always"),
+                                                new Song("Daddy's Train"),
+                                                new Song("I'll Fly Away"))))
+                        ))),
+                new Artist(
+                        "M-Cat",
+                        R.drawable.artist_3,
+                        new ArrayList<>(Arrays.asList(
+                                new Album("What's The News",
+                                        "M-Cat",
+                                        R.drawable.album_7,
+                                        new ArrayList<Song>(Arrays.asList(
+                                                new Song("INTRO (GET IT)"),
+                                                new Song("A-2 (FEAT. THA N-DAWG)"),
+                                                new Song("STUDIO VIBE"),
+                                                new Song("AVOCADO TOAST"),
+                                                new Song("3 AM"),
+                                                new Song("DROP IT"),
+                                                new Song("TRUTH"),
+                                                new Song("THYME OUT"),
+                                                new Song("P.A.S.T.A"))))
+                        )))));
 
+        albums = new ArrayList<>();
         recentAlbums = new ArrayList<>();
         songs = new ArrayList<>();
-        artists = new ArrayList<>();
         albumHashMap = new HashMap<>();
         artistHashMap = new HashMap<>();
-        for (Album album : albums) {
-            songs.addAll(album.getSongs());
-            //artists.add(album.getArtistName());
-            albumHashMap.put(album.getAlbumId(), album);
-            if (artistHashMap.get(album.getArtistName()) == null) {
-                artistHashMap.put(album.getArtistName(), new ArrayList<Album>(Arrays.asList(
-                        album)));
-            } else {
-                artistHashMap.get(album.getArtistName()).add(album);
-            }
-            if (album.getIsRecent()) {
-                recentAlbums.add(album);
+        songHashMap = new HashMap<>();
+        for (Artist artist : artists) {
+            artistHashMap.put(artist.getArtistId(), artist);
+            for (Album album : artist.getAlbums()) {
+                albums.add(album);
+                for (Song song : album.getSongs()) {
+                    songs.add(song);
+                    songHashMap.put(song.getSongId(), song);
+                }
+                albumHashMap.put(album.getAlbumId(), album);
+                if (album.getIsRecent()) {
+                    recentAlbums.add(album);
+                }
             }
         }
     }
@@ -122,6 +98,20 @@ public class MusicLibrary {
             albumHashMap = new HashMap<>();
         }
         return albumHashMap.get(id);
+    }
+
+    public static Artist getArtistById(int id) {
+        if (artistHashMap == null) {
+            artistHashMap = new HashMap<>();
+        }
+        return artistHashMap.get(id);
+    }
+
+    public static Song getSongById(int id) {
+        if (songHashMap == null) {
+            songHashMap = new HashMap<>();
+        }
+        return songHashMap.get(id);
     }
 
 }

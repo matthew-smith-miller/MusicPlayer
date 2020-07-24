@@ -40,12 +40,12 @@ public class ArtistAdapter extends ArrayAdapter<Artist> {
         listItemView.setTag(currentArtist.getArtistId());
 
         //Set OnClickListener to go to AlbumActivity
-        listItemView.findViewById(R.id.album_item).setOnClickListener(new View.OnClickListener() {
+        listItemView.findViewById(R.id.artist_item).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Context context = view.getContext();
-                Intent intent = new Intent(context, AlbumActivity.class);
-                intent.putExtra("album", Integer.parseInt(view.getTag().toString()));
+                Intent intent = new Intent(context, ArtistActivity.class);
+                intent.putExtra("artist", Integer.parseInt(view.getTag().toString()));
                 context.startActivity(intent);
             }
         });

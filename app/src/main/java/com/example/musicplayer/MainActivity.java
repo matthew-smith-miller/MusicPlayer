@@ -7,16 +7,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        MusicLibrary.buildAlbums();
+        MusicLibrary.buildMusicLibrary();
 
         //Populate recent albums
         AlbumAdapter albumAdapter = new AlbumAdapter(this, MusicLibrary.recentAlbums);
@@ -26,19 +23,19 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.button_albums).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(view.getContext(), AlbumsActivity.class));
+                startActivity(new Intent(view.getContext(), AlbumsListActivity.class));
             }
         });
         findViewById(R.id.button_artists).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(view.getContext(), ArtistsActivity.class));
+                startActivity(new Intent(view.getContext(), ArtistsListActivity.class));
             }
         });
         findViewById(R.id.button_songs).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(view.getContext(), SongsActivity.class));
+                startActivity(new Intent(view.getContext(), SongsListActivity.class));
             }
         });
     }

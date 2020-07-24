@@ -4,6 +4,8 @@ public class Song {
 
     private String mTitle;
     private int mLength;
+    private static int idCounter;
+    private int mId;
 
     public Song(String title) {
         mTitle = title;
@@ -27,5 +29,9 @@ public class Song {
         }
         lengthText += mLength % 60;
         return lengthText;
+    }
+
+    public int getSongId() {
+        return mId;
     }
 }

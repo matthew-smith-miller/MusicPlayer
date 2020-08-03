@@ -6,10 +6,15 @@ public class Song {
     private int mLength;
     private static int idCounter;
     private int mId;
+    private int mArtistId;
+    private int mAlbumId;
+    private int mTrackNumber;
 
     public Song(String title) {
         mTitle = title;
         mLength = setRandomLength();
+        idCounter++;
+        mId = idCounter;
     }
 
     private int setRandomLength() {
@@ -21,17 +26,38 @@ public class Song {
     }
 
     public String getSongLength() {
-        String lengthText = "";
-        lengthText += (int) Math.floor(mLength / 60);
-        lengthText += ":";
-        if (mLength % 60 < 10) {
-            lengthText += "0";
-        }
-        lengthText += mLength % 60;
-        return lengthText;
+        return MusicLibrary.convertTime(mLength);
+    }
+
+    public int getSongLengthInt() {
+        return mLength;
     }
 
     public int getSongId() {
         return mId;
+    }
+
+    public int getArtistId() {
+        return mArtistId;
+    }
+
+    public void setArtistId(int artistId) {
+        mArtistId = artistId;
+    }
+
+    public int getAlbumId() {
+        return mAlbumId;
+    }
+
+    public void setAlbumId(int albumId) {
+        mAlbumId = albumId;
+    }
+
+    public int getTrackNumber() {
+        return mTrackNumber;
+    }
+
+    public void setTrackNumber(int trackNumber) {
+        mTrackNumber = trackNumber;
     }
 }

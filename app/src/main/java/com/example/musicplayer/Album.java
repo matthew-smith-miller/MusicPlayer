@@ -7,18 +7,16 @@ import java.util.ArrayList;
 public class Album {
     private static int idCounter;
     private int mId;
+    private int mArtistId;
     private String mAlbumTitle;
-    private String mArtistName;
     private int mAlbumArt;
     private Boolean mIsRecent;
     private ArrayList<Song> mSongs;
 
     public Album(String albumTitle,
-                 String artistName,
                  int albumArt,
                  ArrayList<Song> songs) {
         mAlbumTitle = albumTitle;
-        mArtistName = artistName;
         mAlbumArt = albumArt;
         mSongs = songs;
         idCounter++;
@@ -30,12 +28,16 @@ public class Album {
         return mAlbumTitle;
     }
 
-    public String getArtistName() {
-        return mArtistName;
-    }
-
     public int getAlbumId() {
         return mId;
+    }
+
+    public int getArtistId() {
+        return mArtistId;
+    }
+
+    public void setArtistId(int artistId) {
+        mArtistId = artistId;
     }
 
     public int getAlbumArt() {

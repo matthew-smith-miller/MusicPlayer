@@ -20,7 +20,8 @@ public class AlbumActivity extends AppCompatActivity {
                 getIntent().getExtras().getInt("album"));
 
         ((TextView) findViewById(R.id.album_title)).setText(currentAlbum.getAlbumTitle());
-        ((TextView) findViewById(R.id.album_artist)).setText(currentAlbum.getArtistName());
+        ((TextView) findViewById(R.id.album_artist)).setText(MusicLibrary.getArtistById(
+                currentAlbum.getArtistId()).getArtistName());
         ((ImageView) findViewById(R.id.album_art)).setImageResource(currentAlbum.getAlbumArt());
 
         SongAdapter songAdapter = new SongAdapter(this, currentAlbum.getSongs());

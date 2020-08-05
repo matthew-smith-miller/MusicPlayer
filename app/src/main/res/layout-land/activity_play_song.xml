@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="12dp"
+    tools:context=".PlaySongActivity">
+
+    <LinearLayout
+        android:layout_width="280dp"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/album_art"
+            android:layout_width="280dp"
+            android:layout_height="280dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="12dp"
+            android:background="@color/colorPrimary" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/song_title"
+            style="@style/HeaderText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="12dp"
+            tools:text="Victory Lap" />
+
+        <TextView
+            android:id="@+id/artist_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp"
+            android:textColor="@android:color/white"
+            tools:text="Nipsey Hussle" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <View
+                android:id="@+id/progress_bar"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginBottom="24dp"
+                android:background="@color/colorPrimary" />
+
+            <TextView
+                android:id="@+id/play_time_current"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/progress_bar"
+                android:layout_alignTop="@id/progress_bar"
+                android:layout_marginTop="12dp"
+                android:textColor="@android:color/white"
+                tools:text="0:00" />
+
+            <TextView
+                android:id="@+id/play_time_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/progress_bar"
+                android:layout_alignRight="@id/progress_bar"
+                android:layout_marginTop="12dp"
+                android:textColor="@android:color/white"
+                tools:text="3:43" />
+
+            <View
+                android:id="@+id/progress_dot"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_alignLeft="@id/progress_bar"
+                android:layout_alignTop="@id/progress_bar"
+                android:layout_marginTop="-6dp"
+                android:background="@color/colorPrimaryDark" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/button_pane"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginBottom="24dp"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/button_back"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/ic_baseline_fast_rewind_60" />
+
+            <Button
+                android:id="@+id/button_play_pause"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:background="@drawable/ic_baseline_pause_circle_filled_96" />
+
+            <Button
+                android:id="@+id/button_forward"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/ic_baseline_fast_forward_60" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

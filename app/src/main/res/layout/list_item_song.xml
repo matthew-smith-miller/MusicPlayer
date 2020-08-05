@@ -4,16 +4,18 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:id="@+id/song_item"
-    android:padding="16dp">
-
+    android:paddingLeft="6dp"
+    android:paddingTop="16dp"
+    android:paddingRight="6dp"
+    android:paddingBottom="16dp">
 
     <TextView
         android:id="@+id/list_song_title"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_marginLeft="12dp"
-        android:layout_weight="7"
-        android:gravity="center_vertical"
+        style="@style/HeaderText"
+        android:layout_weight="5"
         tools:text="Inner City Blues" />
 
     <TextView
@@ -22,7 +24,7 @@
         android:layout_height="match_parent"
         android:layout_marginLeft="12dp"
         android:layout_weight="1"
-        android:gravity="center_vertical"
+        style="@style/HeaderText"
         tools:text="5:24" />
 
 </LinearLayout>

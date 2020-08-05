@@ -36,11 +36,11 @@ public class MusicLibrary {
 
         artists = new ArrayList<>(Arrays.asList(
                 new Artist(
-                        "Dale Earkins",
+                        "Dale Erkins",
                         R.drawable.artist_2,
                         new ArrayList<>(Arrays.asList(
                                 new Album("Wide Open Highway",
-                                        R.drawable.album_2,
+                                        R.drawable.album_10,
                                         new ArrayList<Song>(Arrays.asList(
                                                 new Song("Cowboy Love"),
                                                 new Song("Alberta Skies"),
@@ -69,6 +69,24 @@ public class MusicLibrary {
                                                 new Song("I'll Fly Away"))))
                         ))),
                 new Artist(
+                        "Frankie Pirelli",
+                        R.drawable.artist_0,
+                        new ArrayList<>(Arrays.asList(
+                                new Album("Frankie Sings Frank",
+                                        R.drawable.album_2,
+                                        new ArrayList<Song>(Arrays.asList(
+                                                new Song("All or Nothing"),
+                                                new Song("I'll Never Smile Again"),
+                                                new Song("My Way"),
+                                                new Song("I've Got the World On A String"),
+                                                new Song("Young At Heart"),
+                                                new Song("New York, New York"),
+                                                new Song("Fly Me To The Moon"),
+                                                new Song("Summer Wind"),
+                                                new Song("That's Life"),
+                                                new Song("Chicago"))))
+                        ))),
+                new Artist(
                         "Jimmy Tropic",
                         R.drawable.artist_1,
                         new ArrayList<>(Arrays.asList(
@@ -93,19 +111,6 @@ public class MusicLibrary {
                         "Juan Ruiz",
                         R.drawable.artist_4,
                         new ArrayList<>(Arrays.asList(
-                                new Album("Vagabundo",
-                                        R.drawable.album_9,
-                                        new ArrayList<Song>(Arrays.asList(
-                                                new Song("Arco iris"),
-                                                new Song("Si no me ves"),
-                                                new Song("Radio Libertad"),
-                                                new Song("Tenochtitlan"),
-                                                new Song("El muro"),
-                                                new Song("TRON feat. M-Cat"),
-                                                new Song("Telaraña"),
-                                                new Song("Ojalá que venga la primavera"),
-                                                new Song("Juventud"),
-                                                new Song("Seguro")))),
                                 new Album("Águila",
                                         R.drawable.album_5,
                                         new ArrayList<Song>(Arrays.asList(
@@ -121,7 +126,20 @@ public class MusicLibrary {
                                                 new Song("Justicia"),
                                                 new Song("Ya no"),
                                                 new Song("La puerta"),
-                                                new Song("Calibán"))))
+                                                new Song("Calibán")))),
+                                new Album("Vagabundo",
+                                        R.drawable.album_9,
+                                        new ArrayList<Song>(Arrays.asList(
+                                                new Song("Arco iris"),
+                                                new Song("Si no me ves"),
+                                                new Song("Radio Libertad"),
+                                                new Song("Tenochtitlan"),
+                                                new Song("El muro"),
+                                                new Song("TRON feat. M-Cat"),
+                                                new Song("Telaraña"),
+                                                new Song("Ojalá que venga la primavera"),
+                                                new Song("Juventud"),
+                                                new Song("Seguro"))))
                         ))),
                 new Artist(
                         "M-Cat",
@@ -190,6 +208,10 @@ public class MusicLibrary {
         return songHashMap.get(id);
     }
 
+    public static boolean getIsSongPlaying() {
+        return isSongPlaying;
+    }
+
     public static String convertTime(int lengthInSeconds) {
         String lengthText = "";
         lengthText += (int) Math.floor(lengthInSeconds / 60);
@@ -212,7 +234,7 @@ public class MusicLibrary {
     public static void playSongFromBeginning(Song song) {
         countDownTimer.cancel();
         currentSong = song;
-        currentSongPosition = 0;
+        currentSongPosition = -1;
         isSongPlaying = true;
         playSongFromCurrentPosition();
     }

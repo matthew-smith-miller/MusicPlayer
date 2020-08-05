@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -37,6 +38,13 @@ public class PlaySongActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 MusicLibrary.togglePlay();
+                if (MusicLibrary.getIsSongPlaying()) {
+                    findViewById(R.id.button_play_pause).setBackgroundResource(
+                            R.drawable.ic_baseline_pause_circle_filled_96);
+                } else {
+                    findViewById(R.id.button_play_pause).setBackgroundResource(
+                            R.drawable.ic_baseline_play_circle_filled_96);
+                }
             }
         });
 
@@ -57,11 +65,9 @@ public class PlaySongActivity extends AppCompatActivity {
             public void onTick(long millisUntilFinished) {
                 setCurrentSongPositionText();
                 setProgressBarLocation();
-                Log.d(this.getClass().getName(), String.valueOf(songId));
                 if (songId != MusicLibrary.getCurrentSong().getSongId()) {
                     currentSong = MusicLibrary.getCurrentSong();
                     setTextAndImages(currentSong);
-                    Log.d(this.getClass().getName(), "setting new song");
                 }
                 songId = currentSong.getSongId();
             }
@@ -92,7 +98,6 @@ public class PlaySongActivity extends AppCompatActivity {
         int progressBarWidth = findViewById(R.id.progress_bar).getWidth();
         double leftMargin = ((double) MusicLibrary.getCurrentSongPosition() /
                 (double) currentSong.getSongLengthInt() * progressBarWidth);
-        Log.d(this.getClass().getName(), "leftMargin: " + leftMargin);
         RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) findViewById(
                 R.id.progress_dot).getLayoutParams();
         params.setMargins((int) leftMargin,

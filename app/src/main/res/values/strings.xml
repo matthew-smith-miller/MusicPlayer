@@ -8,4 +8,9 @@
     <string name="play_song">Play Song</string>
     <string name="songs">Songs</string>
     <string name="album_spotlight">Album Spotlight</string>
+    <string name="recent_albums">Recent Albums</string>
+    <string name="_1971">1971</string>
+    <string name="marvin_gaye">Marvin Gaye</string>
+    <string name="what_s_going_on">What\'s Going On</string>
+    <string name="hello_matt">Hello, Matt</string>
 </resources>

@@ -1,6 +1,5 @@
 package com.example.musicplayer;
 
-import android.app.Activity;
 import android.os.CountDownTimer;
 import android.util.Log;
 
@@ -202,32 +201,12 @@ public class MusicLibrary {
         return lengthText;
     }
 
-    public static void incrementCurrentSongPosition(int increment) {
-        currentSongPosition += increment;
-    }
-
     public static int getCurrentSongPosition() {
         return currentSongPosition;
     }
 
-    public static void setCurrentSongPosition(int position) {
-        currentSongPosition = position;
-    }
-
-    public static Boolean getIsSongPlaying() {
-        return isSongPlaying;
-    }
-
-    public static void setIsSongPlaying(Boolean bool) {
-        isSongPlaying = bool;
-    }
-
-    public static void play() {
-        isSongPlaying = true;
-    }
-
-    public static void pause() {
-        isSongPlaying = false;
+    public static Song getCurrentSong() {
+        return currentSong;
     }
 
     public static void playSongFromBeginning(Song song) {
@@ -235,7 +214,7 @@ public class MusicLibrary {
         currentSong = song;
         currentSongPosition = 0;
         isSongPlaying = true;
-        startTimerFromCurrentPosition();
+        playSongFromCurrentPosition();
     }
 
     public static void togglePlay() {
@@ -243,37 +222,57 @@ public class MusicLibrary {
             isSongPlaying = false;
             countDownTimer.cancel();
         } else {
-            startTimerFromCurrentPosition();
+            playSongFromCurrentPosition();
         }
     }
 
-    private static void startTimerFromCurrentPosition() {
+    public static void playSongFromCurrentPosition() {
+        countDownTimer.cancel();
+        isSongPlaying = true;
         countDownTimer = new CountDownTimer(((currentSong.getSongLengthInt() -
-                currentSongPosition + 1) * 1000), 1000) {
+                currentSongPosition) * 1000), 1000) {
             public void onTick(long millisUntilFinished) {
                 Log.d(this.getClass().getName(), String.valueOf(currentSongPosition));
                 currentSongPosition++;
             }
 
             public void onFinish() {
-                countDownTimer.cancel();
-                if (currentSong.getTrackNumber() < getAlbumById(
-                        currentSong.getAlbumId()).getSongs().size()) {
-                    currentSong = MusicLibrary.getAlbumById(
-                            currentSong.getAlbumId()).getSongs().get(
-                            currentSong.getTrackNumber() + 1);
-                    playSongFromBeginning(currentSong);
-                }
+                actionForward();
+                playSongFromCurrentPosition();
             }
         }.start();
     }
 
-    public Song getCurrentSong() {
-        return currentSong;
+    public static void actionForward() {
+        countDownTimer.cancel();
+        if (currentSong.getTrackNumber() + 1 == getAlbumById(
+                currentSong.getAlbumId()).getSongs().size()) {
+            currentSong = getAlbumById(
+                    currentSong.getAlbumId()).getSongs().get(0);
+            currentSongPosition = 0;
+            isSongPlaying = false;
+        } else {
+            currentSong = MusicLibrary.getAlbumById(
+                    currentSong.getAlbumId()).getSongs().get(
+                    currentSong.getTrackNumber() + 1);
+            if (isSongPlaying) {
+                playSongFromBeginning(currentSong);
+            } else {
+                currentSongPosition = 0;
+            }
+        }
     }
 
-    public static void setCurrentSong(Song song) {
-        currentSong = song;
+    public static void actionBack() {
+        countDownTimer.cancel();
+        if (currentSongPosition < 3 && currentSong.getTrackNumber() != 0) {
+            currentSong = getAlbumById(
+                    currentSong.getAlbumId()).getSongs().get(currentSong.getTrackNumber() - 1);
+        }
+        if (isSongPlaying) {
+            playSongFromBeginning(currentSong);
+        } else {
+            currentSongPosition = 0;
+        }
     }
-
 }

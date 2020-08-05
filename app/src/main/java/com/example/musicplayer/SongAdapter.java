@@ -44,7 +44,6 @@ public class SongAdapter extends ArrayAdapter<Song> {
             public void onClick(View view) {
                 Context context = view.getContext();
                 Intent intent = new Intent(context, PlaySongActivity.class);
-                intent.putExtra("song", Integer.parseInt(view.getTag().toString()));
                 MusicLibrary.playSongFromBeginning(MusicLibrary.getSongById((Integer.parseInt(
                         view.getTag().toString()))));
                 context.startActivity(intent);

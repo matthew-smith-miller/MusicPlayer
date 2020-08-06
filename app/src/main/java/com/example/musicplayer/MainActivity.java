@@ -38,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(view.getContext(), SongsListActivity.class));
             }
         });
+
+        MusicLibrary.setFooter(this);
     }
 
 }

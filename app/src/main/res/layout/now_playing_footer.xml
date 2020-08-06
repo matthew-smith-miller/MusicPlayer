@@ -1,0 +1,72 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/now_playing_footer"
+    android:layout_width="match_parent"
+    android:layout_height="84dp"
+    android:layout_alignParentBottom="true"
+    android:background="@color/colorBackgroundGrey">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/album_art"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/colorPrimary" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/list_album_title"
+                style="@style/HeaderText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="What's Going On" />
+
+            <TextView
+                android:id="@+id/list_album_artist"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                tools:text="Marvin Gaye" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/progress_bar_shadow"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/colorLightGray" />
+
+    <View
+        android:id="@+id/progress_bar"
+        android:layout_width="240dp"
+        android:layout_height="2dp"
+        android:background="@color/colorPrimary" />
+
+    <TextView
+        android:id="@+id/play_time_current"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:layout_toLeftOf="@id/play_time_total"
+        android:textColor="@android:color/white"
+        tools:text="0:00" />
+
+    <TextView
+        android:id="@+id/play_time_total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_margin="6dp"
+        android:textColor="@android:color/white"
+        tools:text="/ 3:43" />
+</RelativeLayout>

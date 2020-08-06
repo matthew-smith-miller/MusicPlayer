@@ -94,7 +94,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:layout_marginBottom="48dp" />
+            android:layout_marginBottom="132dp" />
 
 
     </LinearLayout>
@@ -102,7 +102,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_above="@id/now_playing_footer"
         android:gravity="center_horizontal"
         android:orientation="horizontal"
         android:padding="3dp">
@@ -131,4 +131,9 @@
             android:layout_weight="1"
             android:text="@string/songs" />
     </LinearLayout>
+
+    <include
+        android:id="@+id/now_playing_footer"
+        layout="@layout/now_playing_footer" />
+
 </RelativeLayout>

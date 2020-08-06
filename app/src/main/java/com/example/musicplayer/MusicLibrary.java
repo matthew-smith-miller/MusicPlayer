@@ -1,7 +1,10 @@
 package com.example.musicplayer;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.CountDownTimer;
 import android.util.Log;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,7 +19,7 @@ public class MusicLibrary {
     private static HashMap<Integer, Artist> artistHashMap;
     private static HashMap<Integer, Album> albumHashMap;
     private static HashMap<Integer, Song> songHashMap;
-    private static Boolean isSongPlaying;
+    private static Boolean isSongPlaying = false;
     private static Song currentSong;
     private static int currentSongPosition;
     private static CountDownTimer countDownTimer;
@@ -295,6 +298,12 @@ public class MusicLibrary {
             playSongFromBeginning(currentSong);
         } else {
             currentSongPosition = 0;
+        }
+    }
+
+    public static void setFooter(Activity activity) {
+        if (!isSongPlaying) {
+            activity.findViewById(R.id.now_playing_footer).setVisibility(View.GONE);
         }
     }
 }

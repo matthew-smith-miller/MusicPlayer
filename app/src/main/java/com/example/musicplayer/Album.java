@@ -1,7 +1,5 @@
 package com.example.musicplayer;
 
-import android.app.Activity;
-
 import java.util.ArrayList;
 
 public class Album {
@@ -21,7 +19,7 @@ public class Album {
         mSongs = songs;
         idCounter++;
         mId = idCounter;
-        mIsRecent = setRecentFlag();
+        mIsRecent = setRandomRecentFlag();
     }
 
     public String getAlbumTitle() {
@@ -52,7 +50,11 @@ public class Album {
         return mIsRecent;
     }
 
-    private Boolean setRecentFlag() {
+    public void setIsRecent(boolean bool) {
+        mIsRecent = bool;
+    }
+
+    private Boolean setRandomRecentFlag() {
         if (Math.random() > 0.70) {
             return true;
         } else {

@@ -1,10 +1,9 @@
 package com.example.musicplayer;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -13,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class PlaySongActivity extends AppCompatActivity {
 
-    Song currentSong;
     int songId;
     CountDownTimer countDownTimer;
 
@@ -22,9 +20,14 @@ public class PlaySongActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_song);
 
-        currentSong = MusicLibrary.getCurrentSong();
-        songId = currentSong.getSongId();
-        setTextAndImages(currentSong);
+        songId = MusicLibrary.getCurrentSong().getSongId();
+        if (!MusicLibrary.recentAlbums.contains(MusicLibrary.getAlbumById(
+                MusicLibrary.getCurrentSong().getAlbumId()))) {
+            MusicLibrary.recentAlbums.add(MusicLibrary.getAlbumById(
+                    MusicLibrary.getCurrentSong().getAlbumId()));
+        }
+
+        refreshView();
         setRefreshCycle();
 
         findViewById(R.id.button_back).setOnClickListener(new View.OnClickListener() {
@@ -56,20 +59,26 @@ public class PlaySongActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        refreshView();
+    }
+
     private void setRefreshCycle() {
+        final Activity activity = this;
         if (countDownTimer != null) {
             countDownTimer.cancel();
         }
         countDownTimer = new CountDownTimer(30000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                setCurrentSongPositionText();
-                setProgressBarLocation();
+                MusicLibrary.setCurrentSongPositionText(activity);
+                MusicLibrary.setProgressBallLocation(activity);
                 if (songId != MusicLibrary.getCurrentSong().getSongId()) {
-                    currentSong = MusicLibrary.getCurrentSong();
-                    setTextAndImages(currentSong);
+                    MusicLibrary.setTextAndImages(activity);
                 }
-                songId = currentSong.getSongId();
+                songId = MusicLibrary.getCurrentSong().getSongId();
             }
 
             @Override
@@ -79,31 +88,10 @@ public class PlaySongActivity extends AppCompatActivity {
         }.start();
     }
 
-    public void setCurrentSongPositionText() {
-        ((TextView) findViewById(R.id.play_time_current)).setText(
-                MusicLibrary.convertTime(MusicLibrary.getCurrentSongPosition()));
+    private void refreshView() {
+        MusicLibrary.setProgressBallLocation(this);
+        MusicLibrary.setTextAndImages(this);
     }
 
-    public void setTextAndImages(Song song) {
-        ((TextView) findViewById(R.id.song_title)).setText(song.getSongTitle());
-        setCurrentSongPositionText();
-        ((TextView) findViewById(R.id.play_time_total)).setText(song.getSongLength());
-        ((TextView) findViewById(R.id.artist_name)).setText(
-                MusicLibrary.getArtistById(song.getArtistId()).getArtistName());
-        ((ImageView) findViewById(R.id.album_art)).setImageResource(
-                MusicLibrary.getAlbumById(song.getAlbumId()).getAlbumArt());
-    }
 
-    public void setProgressBarLocation() {
-        int progressBarWidth = findViewById(R.id.progress_bar).getWidth();
-        double leftMargin = ((double) MusicLibrary.getCurrentSongPosition() /
-                (double) currentSong.getSongLengthInt() * progressBarWidth);
-        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) findViewById(
-                R.id.progress_dot).getLayoutParams();
-        params.setMargins((int) leftMargin,
-                params.topMargin,
-                params.rightMargin,
-                params.bottomMargin);
-        findViewById(R.id.progress_dot).setLayoutParams(params);
-    }
 }

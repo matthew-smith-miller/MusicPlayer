@@ -1,6 +1,5 @@
 package com.example.musicplayer;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -18,6 +17,9 @@ public class AlbumActivity extends AppCompatActivity {
         setContentView(R.layout.activity_album);
         currentAlbum = MusicLibrary.getAlbumById(
                 getIntent().getExtras().getInt("album"));
+        if (!MusicLibrary.recentAlbums.contains(currentAlbum)) {
+            MusicLibrary.recentAlbums.add(currentAlbum);
+        }
 
         ((TextView) findViewById(R.id.album_title)).setText(currentAlbum.getAlbumTitle());
         ((TextView) findViewById(R.id.album_artist)).setText(MusicLibrary.getArtistById(

@@ -19,7 +19,6 @@ public class Album {
         mSongs = songs;
         idCounter++;
         mId = idCounter;
-        mIsRecent = setRandomRecentFlag();
     }
 
     public String getAlbumTitle() {
@@ -44,14 +43,6 @@ public class Album {
 
     public ArrayList<Song> getSongs() {
         return mSongs;
-    }
-
-    public Boolean getIsRecent() {
-        return mIsRecent;
-    }
-
-    public void setIsRecent(boolean bool) {
-        mIsRecent = bool;
     }
 
     private Boolean setRandomRecentFlag() {

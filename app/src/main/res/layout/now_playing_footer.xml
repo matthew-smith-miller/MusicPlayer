@@ -25,14 +25,14 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/list_album_title"
+                android:id="@+id/song_title"
                 style="@style/HeaderText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:text="What's Going On" />
 
             <TextView
-                android:id="@+id/list_album_artist"
+                android:id="@+id/artist_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/white"
@@ -56,10 +56,19 @@
         android:id="@+id/play_time_current"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
-        android:layout_toLeftOf="@id/play_time_total"
+        android:layout_margin="6dp"
+        android:layout_toLeftOf="@id/play_time_slash"
         android:textColor="@android:color/white"
         tools:text="0:00" />
+
+    <TextView
+        android:id="@+id/play_time_slash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:layout_toLeftOf="@id/play_time_total"
+        android:text="/"
+        android:textColor="@android:color/white" />
 
     <TextView
         android:id="@+id/play_time_total"
@@ -68,5 +77,5 @@
         android:layout_alignParentRight="true"
         android:layout_margin="6dp"
         android:textColor="@android:color/white"
-        tools:text="/ 3:43" />
+        tools:text="3:43" />
 </RelativeLayout>

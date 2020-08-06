@@ -1,10 +1,11 @@
 package com.example.musicplayer;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.CountDownTimer;
 import android.util.Log;
-import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,8 +24,10 @@ public class MusicLibrary {
     private static Song currentSong;
     private static int currentSongPosition;
     private static CountDownTimer countDownTimer;
+    private static boolean isMusicLibraryCreated = false;
 
     public static void buildMusicLibrary() {
+        currentSong = new Song("");
         countDownTimer = new CountDownTimer(30000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -183,11 +186,13 @@ public class MusicLibrary {
                             (Song) albumSongs.get(i));
                 }
                 albumHashMap.put(album.getAlbumId(), album);
-                if (album.getIsRecent()) {
-                    recentAlbums.add(album);
-                }
             }
         }
+        isMusicLibraryCreated = true;
+    }
+
+    public static boolean getIsMusicLibraryCreated() {
+        return isMusicLibraryCreated;
     }
 
     public static Album getAlbumById(int id) {
@@ -303,7 +308,50 @@ public class MusicLibrary {
 
     public static void setFooter(Activity activity) {
         if (!isSongPlaying) {
-            activity.findViewById(R.id.now_playing_footer).setVisibility(View.GONE);
+            activity.findViewById(R.id.now_playing_footer).getLayoutParams().height = 0;
+        } else {
+            final float scale = activity.getApplicationContext()
+                    .getResources().getDisplayMetrics().density;
+            activity.findViewById(R.id.now_playing_footer).getLayoutParams().height =
+                    (int) (84 * scale + 0.5f);
         }
+    }
+
+    public static void setCurrentSongPositionText(Activity activity) {
+        ((TextView) activity.findViewById(R.id.play_time_current)).setText(
+                convertTime(getCurrentSongPosition()));
+    }
+
+    public static void setTextAndImages(Activity activity) {
+        ((TextView) activity.findViewById(R.id.song_title)).setText(currentSong.getSongTitle());
+        setCurrentSongPositionText(activity);
+        ((TextView) activity.findViewById(R.id.play_time_total)).setText(
+                currentSong.getSongLength());
+        ((TextView) activity.findViewById(R.id.artist_name)).setText(
+                getArtistById(currentSong.getArtistId()).getArtistName());
+        ((ImageView) activity.findViewById(R.id.album_art)).setImageResource(
+                getAlbumById(currentSong.getAlbumId()).getAlbumArt());
+        Log.d("This is the album art: ", String.valueOf(
+                getAlbumById(currentSong.getAlbumId()).getAlbumArt()));
+    }
+
+    public static void setProgressBallLocation(Activity activity) {
+        int progressBarWidth = activity.findViewById(R.id.progress_bar).getWidth();
+        double leftMargin = ((double) getCurrentSongPosition() /
+                (double) currentSong.getSongLengthInt() * progressBarWidth);
+        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) activity.findViewById(
+                R.id.progress_dot).getLayoutParams();
+        params.setMargins((int) leftMargin,
+                params.topMargin,
+                params.rightMargin,
+                params.bottomMargin);
+        activity.findViewById(R.id.progress_dot).setLayoutParams(params);
+    }
+
+    public static void setProgressBarWidth(Activity activity) {
+        int fullWidth = activity.findViewById(R.id.progress_bar_shadow).getWidth();
+        activity.findViewById(R.id.progress_bar).getLayoutParams().width =
+                (int) ((double) getCurrentSongPosition() /
+                        (double) currentSong.getSongLengthInt() * fullWidth);
     }
 }

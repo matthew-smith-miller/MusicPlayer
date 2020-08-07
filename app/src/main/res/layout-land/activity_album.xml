@@ -3,45 +3,54 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
-    android:padding="12dp"
+    android:orientation="vertical"
     tools:context=".AlbumActivity">
 
     <LinearLayout
-        android:layout_width="240dp"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="6dp"
+        android:layout_weight="1">
 
-        <TextView
-            android:id="@+id/album_title"
-            style="@style/HeaderText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            tools:text="Victory Lap" />
-
-        <TextView
-            android:id="@+id/album_artist"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:layout_marginBottom="6dp"
-            android:textColor="@android:color/white"
-            tools:text="Nipsey Hussle" />
-
-        <ImageView
-            android:id="@+id/album_art"
+        <LinearLayout
             android:layout_width="240dp"
-            android:layout_height="240dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="12dp"
-            android:background="@color/colorPrimary" />
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="6dp">
+
+            <TextView
+                android:id="@+id/album_title"
+                style="@style/HeaderText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                tools:text="Victory Lap" />
+
+            <TextView
+                android:id="@+id/album_artist"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="6dp"
+                android:textColor="@android:color/white"
+                tools:text="Nipsey Hussle" />
+
+            <ImageView
+                android:id="@+id/album_art"
+                android:layout_width="240dp"
+                android:layout_height="240dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="12dp"
+                android:background="@color/colorPrimary" />
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="6dp" />
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="12dp" />
+    <include layout="@layout/now_playing_footer" />
 
 </LinearLayout>

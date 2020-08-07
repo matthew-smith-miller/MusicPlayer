@@ -92,6 +92,4 @@ public class PlaySongActivity extends AppCompatActivity {
         MusicLibrary.setProgressBallLocation(this);
         MusicLibrary.setTextAndImages(this);
     }
-
-
 }

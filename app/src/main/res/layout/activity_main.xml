@@ -1,51 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <TextView
+        style="@style/HeaderText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="6dp"
+        android:text="Hello, Matt" />
+
+    <!--Album spotlight start-->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="12dp">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginRight="6dp"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal">
 
-        <TextView
-            style="@style/HeaderText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="12dp"
-            android:text="Hello, Matt" />
-
-        <!--Album spotlight start-->
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
-            android:orientation="horizontal">
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="12dp">
 
-            <LinearLayout
+            <ImageView
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/whats_going_on" />
+
+            <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:padding="12dp">
+                android:layout_height="wrap_content"
+                android:text="@string/what_s_going_on"
+                android:textColor="@android:color/white" />
 
-                <ImageView
-                    android:layout_width="96dp"
-                    android:layout_height="96dp"
-                    android:layout_marginBottom="12dp"
-                    android:background="@drawable/whats_going_on" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/what_s_going_on"
-                    android:textColor="@android:color/white" />
-
-                <TextView
+            <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/marvin_gaye"
@@ -79,25 +76,25 @@
                     android:textColor="@android:color/white" />
 
             </LinearLayout>
-        </LinearLayout>
-        <!--Album spotlight end-->
-
-        <TextView
-            style="@style/HeaderText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:text="@string/recent_albums" />
-
-        <ListView
-            android:id="@+id/recent_albums"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="48dp" />
-
-
     </LinearLayout>
+    <!--Album spotlight end-->
+
+    <TextView
+        style="@style/HeaderText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginRight="6dp"
+        android:text="@string/recent_albums" />
+
+    <ListView
+        android:id="@+id/recent_albums"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="6dp"
+        android:layout_weight="1" />
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -132,7 +129,6 @@
             android:text="@string/songs" />
     </LinearLayout>
 
-    <include
-        layout="@layout/now_playing_footer" />
+    <include layout="@layout/now_playing_footer" />
 
-</RelativeLayout>
+</LinearLayout>

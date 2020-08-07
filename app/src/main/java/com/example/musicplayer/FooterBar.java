@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.CountDownTimer;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 public class FooterBar {
 
@@ -12,7 +14,7 @@ public class FooterBar {
     int songId;
     CountDownTimer countDownTimer;
 
-    public FooterBar(Activity activity) {
+    public FooterBar(final Activity activity) {
         this.activity = activity;
         refreshTextAndImages();
         activity.findViewById(R.id.now_playing_footer).setOnClickListener(
@@ -20,7 +22,9 @@ public class FooterBar {
                     @Override
                     public void onClick(View view) {
                         Context context = view.getContext();
-                        context.startActivity(new Intent(context, PlaySongActivity.class));
+                        Intent intent = new Intent(context, PlaySongActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                        activity.startActivityIfNeeded(intent, 0);
                     }
                 });
     }
@@ -36,7 +40,7 @@ public class FooterBar {
                     MusicLibrary.setCurrentSongPositionText(activity);
                     MusicLibrary.setProgressBarWidth(activity);
                     if (songId != MusicLibrary.getCurrentSong().getSongId()) {
-                        MusicLibrary.setTextAndImages(activity);
+                        MusicLibrary.setTextAndImagesFooter(activity);
                     }
                     songId = MusicLibrary.getCurrentSong().getSongId();
                 }
@@ -51,7 +55,7 @@ public class FooterBar {
 
     public void refreshTextAndImages() {
         if (MusicLibrary.getIsSongPlaying()) {
-            MusicLibrary.setTextAndImages(activity);
+            MusicLibrary.setTextAndImagesFooter(activity);
         }
     }
 }

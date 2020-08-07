@@ -59,5 +59,4 @@ public class MainActivity extends AppCompatActivity {
         AlbumAdapter albumAdapter = new AlbumAdapter(this, MusicLibrary.recentAlbums);
         ((ListView) findViewById(R.id.recent_albums)).setAdapter(albumAdapter);
     }
-
 }

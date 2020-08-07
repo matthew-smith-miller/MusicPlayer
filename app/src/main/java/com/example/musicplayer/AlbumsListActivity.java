@@ -2,11 +2,12 @@ package com.example.musicplayer;
 
 import android.os.Bundle;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class AlbumsListActivity extends AppCompatActivity {
+
+    FooterBar footerBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,5 +16,16 @@ public class AlbumsListActivity extends AppCompatActivity {
 
         AlbumAdapter albumAdapter = new AlbumAdapter(this, MusicLibrary.albums);
         ((ListView) findViewById(R.id.list)).setAdapter(albumAdapter);
+
+        MusicLibrary.setFooter(this);
+        footerBar = new FooterBar(this);
+        footerBar.setRefreshCycle();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MusicLibrary.setFooter(this);
+        footerBar.refreshTextAndImages();
     }
 }

@@ -231,12 +231,17 @@ public class MusicLibrary {
         return lengthText;
     }
 
+    public static Song getCurrentSong() {
+        return currentSong;
+    }
+
     public static int getCurrentSongPosition() {
         return currentSongPosition;
     }
 
-    public static Song getCurrentSong() {
-        return currentSong;
+    public static void setCurrentSongPositionText(Activity activity) {
+        ((TextView) activity.findViewById(R.id.play_time_current)).setText(
+                convertTime(getCurrentSongPosition()));
     }
 
     public static void playSongFromBeginning(Song song) {
@@ -317,11 +322,6 @@ public class MusicLibrary {
         }
     }
 
-    public static void setCurrentSongPositionText(Activity activity) {
-        ((TextView) activity.findViewById(R.id.play_time_current)).setText(
-                convertTime(getCurrentSongPosition()));
-    }
-
     public static void setTextAndImages(Activity activity) {
         ((TextView) activity.findViewById(R.id.song_title)).setText(currentSong.getSongTitle());
         setCurrentSongPositionText(activity);
@@ -335,9 +335,22 @@ public class MusicLibrary {
                 getAlbumById(currentSong.getAlbumId()).getAlbumArt()));
     }
 
+    public static void setTextAndImagesFooter(Activity activity) {
+        ((TextView) activity.findViewById(R.id.song_title)).setText(currentSong.getSongTitle());
+        setCurrentSongPositionText(activity);
+        ((TextView) activity.findViewById(R.id.play_time_total)).setText(
+                currentSong.getSongLength());
+        ((TextView) activity.findViewById(R.id.artist_name)).setText(
+                getArtistById(currentSong.getArtistId()).getArtistName());
+        RelativeLayout footer = activity.findViewById(R.id.now_playing_footer);
+        ((ImageView) footer.findViewById(R.id.album_art)).setImageResource(
+                MusicLibrary.getAlbumById(
+                        currentSong.getAlbumId()).getAlbumArt());
+    }
+
     public static void setProgressBallLocation(Activity activity) {
         int progressBarWidth = activity.findViewById(R.id.progress_bar).getWidth();
-        double leftMargin = ((double) getCurrentSongPosition() /
+        double leftMargin = ((double) currentSongPosition /
                 (double) currentSong.getSongLengthInt() * progressBarWidth);
         RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) activity.findViewById(
                 R.id.progress_dot).getLayoutParams();

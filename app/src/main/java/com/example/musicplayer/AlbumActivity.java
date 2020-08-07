@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class AlbumActivity extends AppCompatActivity {
 
     Album currentAlbum;
+    FooterBar footerBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,5 +29,16 @@ public class AlbumActivity extends AppCompatActivity {
 
         SongAdapter songAdapter = new SongAdapter(this, currentAlbum.getSongs());
         ((ListView) findViewById(R.id.list)).setAdapter(songAdapter);
+
+        MusicLibrary.setFooter(this);
+        footerBar = new FooterBar(this);
+        footerBar.setRefreshCycle();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MusicLibrary.setFooter(this);
+        footerBar.refreshTextAndImages();
     }
 }

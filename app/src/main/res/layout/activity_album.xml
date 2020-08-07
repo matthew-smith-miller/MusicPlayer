@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="12dp"
     tools:context=".AlbumActivity">
 
     <TextView
@@ -12,15 +11,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/HeaderText"
-
+        android:layout_margin="6dp"
         tools:text="Victory Lap" />
 
     <TextView
         android:id="@+id/album_artist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
         android:layout_marginBottom="6dp"
+        android:layout_marginLeft="6dp"
         android:textColor="@android:color/white"
         tools:text="Nipsey Hussle" />
 
@@ -36,8 +35,9 @@
         android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginBottom="12dp"
+        android:layout_margin="6dp"
         android:layout_weight="6" />
+
+    <include layout="@layout/now_playing_footer" />
 
 </LinearLayout>

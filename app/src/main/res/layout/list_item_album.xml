@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="horizontal"
     android:id="@+id/album_item"
+    android:background="?android:attr/selectableItemBackground"
     android:padding="16dp">
 
     <ImageView

@@ -78,4 +78,9 @@
         android:layout_margin="6dp"
         android:textColor="@android:color/white"
         tools:text="3:43" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?android:attr/selectableItemBackground" />
 </RelativeLayout>

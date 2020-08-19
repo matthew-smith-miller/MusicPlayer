@@ -20,13 +20,28 @@
         </activity>
         <activity
             android:name=".AlbumsListActivity"
-            android:label="@string/albums" />
+            android:label="@string/albums"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"></meta-data>
+        </activity>
         <activity
             android:name=".ArtistsListActivity"
-            android:label="@string/artists" />
+            android:label="@string/artists"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"></meta-data>
+        </activity>
         <activity
             android:name=".SongsListActivity"
-            android:label="@string/songs" />
+            android:label="@string/songs"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"></meta-data>
+        </activity>
         <activity
             android:name=".AlbumActivity"
             android:label="@string/view_album" />
